@@ -6,11 +6,7 @@ window.addEventListener('load', () => {
     const ctx = canvas.getContext('2d');
     const erase = document.querySelector('#erase');
     const clear = document.querySelector('#clear');
-    const line = document.querySelector('#line');
-    // drawing mod default
     let isDrawing = true;
-
-
 
     // width and height of the canvas
     canvas.width = window.innerWidth;
@@ -19,15 +15,13 @@ window.addEventListener('load', () => {
     // variables
     let painting = false;
 
-
     const startPosition = (e) => {
         painting = true;
         draw(e)
     }
-
     const endPosition = () => {
         painting = false;
-        ctx.beginPath()
+        ctx.beginPath();
     }
     // draw
     const draw = (e) => {
@@ -43,34 +37,25 @@ window.addEventListener('load', () => {
             ctx.strokeStyle = color.value;
             ctx.lineTo(e.clientX, e.clientY - toolbar.clientHeight);
             ctx.stroke();
-            ctx.beginPath();
-            ctx.moveTo(e.clientX, e.clientY - toolbar.offsetHeight);
-
-
+            isDrawing = true;
         }
     }
-    // tigger straight line
-    line.addEventListener('click', () => {
-        isLine = !isLine;
-    })
     // trigger erase mode
     erase.addEventListener('click', () => {
         isDrawing = !isDrawing;
         if (!isDrawing) {
             canvas.classList.add('erase');
-            erase.classList.add('button-active');
-
+            erase.classList.add('eraser-active');
         } else {
             canvas.classList.remove('erase');
-            erase.classList.remove('button-active');
+            erase.classList.remove('eraser-active');
         }
     })
-
-
     // clear canvas
     clear.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     })
+
     // event listeners
     canvas.addEventListener('mousedown', startPosition);
     canvas.addEventListener('mouseup', endPosition);
