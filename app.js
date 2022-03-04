@@ -45,10 +45,10 @@ window.addEventListener('load', () => {
         isDrawing = !isDrawing;
         if (!isDrawing) {
             canvas.classList.add('erase');
-            erase.classList.add('eraser-active');
+            erase.classList.add('button-active');
         } else {
             canvas.classList.remove('erase');
-            erase.classList.remove('eraser-active');
+            erase.classList.remove('button-active');
         }
     })
     // clear canvas
