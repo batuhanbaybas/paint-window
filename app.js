@@ -9,7 +9,9 @@ window.addEventListener('load', () => {
     const line = document.querySelector('#line');
     // drawing mod default
     let isDrawing = true;
- 
+
+
+
     // width and height of the canvas
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - toolbar.offsetHeight;
@@ -17,12 +19,15 @@ window.addEventListener('load', () => {
     // variables
     let painting = false;
 
+
     const startPosition = (e) => {
         painting = true;
         draw(e)
     }
-    const endPosition = (e) => {
+
+    const endPosition = () => {
         painting = false;
+        ctx.beginPath()
     }
     // draw
     const draw = (e) => {
@@ -38,9 +43,16 @@ window.addEventListener('load', () => {
             ctx.strokeStyle = color.value;
             ctx.lineTo(e.clientX, e.clientY - toolbar.clientHeight);
             ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX, e.clientY - toolbar.offsetHeight);
+
 
         }
     }
+    // tigger straight line
+    line.addEventListener('click', () => {
+        isLine = !isLine;
+    })
     // trigger erase mode
     erase.addEventListener('click', () => {
         isDrawing = !isDrawing;
@@ -54,13 +66,11 @@ window.addEventListener('load', () => {
         }
     })
 
-    
- 
+
     // clear canvas
     clear.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     })
-
     // event listeners
     canvas.addEventListener('mousedown', startPosition);
     canvas.addEventListener('mouseup', endPosition);

@@ -5,38 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <title>Çiz Bi Sen</title>
 
 </head>
 
 <body>
-    <div id="tool-bar" class="tool-bar">
-        <div class="tool-bar-item">
-            <div>
-                <label for="color">Renk</label>
-                <input type="color" id="color" value="#000000">
-            </div>
-            <div>
-                <label for="line-width">Çizgi Kalınlığı</label>
-                <input type="range" id="line-width" min="1" max="10" value="1"
-                    oninput="this.nextElementSibling.value = this.value">
-                <output for="line-width" id="line-width-output">1</output>
-            </div>
-            <div>
-                <button class="button" id="erase">Silgi</button>
-            </div>
-            <div>
-                <button class="button" id="clear">Temizle</button>
-            </div>
-            <div>
-                <button class="button" id="line">-------</button>
-            </div>
-
+<div id="tool-bar" class="tool-bar">
+    <div class="tool-bar-item">
+        <div>
+            <label for="color">Renk</label>
+            <input type="color" id="color" value="#000000">
+        </div>
+        <div>
+            <label for="line-width">Çizgi Kalınlığı</label>
+            <input type="range" id="line-width" min="1" max="10" value="1"
+                   oninput="this.nextElementSibling.value = this.value">
+            <output for="line-width" id="line-width-output">1</output>
+        </div>
+        <div>
+            <button class="button" id="erase">Silgi</button>
+        </div>
+        <div>
+            <button class="button" id="clear">Temizle</button>
         </div>
     </div>
-    <canvas id="canvas"></canvas>
-    <script src="app.js"></script>
+</div>
+<canvas id="canvas"></canvas>
+<script src="app.js"></script>
 </body>
 
 </html>
