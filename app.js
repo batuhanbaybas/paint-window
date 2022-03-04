@@ -5,6 +5,7 @@ window.addEventListener('load', () => {
     const lineWidth = document.querySelector('#line-width');
     const ctx = canvas.getContext('2d');
     const erase = document.querySelector('#erase');
+    const clear = document.querySelector('#clear');
     let isDrawing = true;
 
     // width and height of the canvas
@@ -22,11 +23,14 @@ window.addEventListener('load', () => {
         painting = false;
         ctx.beginPath();
     }
+    // draw
     const draw = (e) => {
         if (!painting) return;
+        // erase mode
         if (!isDrawing) {
             ctx.clearRect(e.clientX, e.clientY - toolbar.offsetHeight, 50, 50);
         }
+        //drawing mode
         else {
             ctx.lineCap = 'round';
             ctx.lineWidth = lineWidth.value;
@@ -36,6 +40,7 @@ window.addEventListener('load', () => {
             isDrawing = true;
         }
     }
+    // trigger erase mode
     erase.addEventListener('click', () => {
         isDrawing = !isDrawing;
         if (!isDrawing) {
@@ -46,7 +51,10 @@ window.addEventListener('load', () => {
             erase.classList.remove('eraser-active');
         }
     })
-
+    // clear canvas
+    clear.addEventListener('click', () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    })
 
     // event listeners
     canvas.addEventListener('mousedown', startPosition);
