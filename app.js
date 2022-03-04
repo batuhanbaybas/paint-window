@@ -9,9 +9,7 @@ window.addEventListener('load', () => {
     const line = document.querySelector('#line');
     // drawing mod default
     let isDrawing = true;
-    // line default
-    let drawLine = false;
-
+ 
     // width and height of the canvas
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - toolbar.offsetHeight;
@@ -25,8 +23,6 @@ window.addEventListener('load', () => {
     }
     const endPosition = (e) => {
         painting = false;
-        !drawLine ? ctx.beginPath() : drawLine = false;
-
     }
     // draw
     const draw = (e) => {
@@ -58,18 +54,8 @@ window.addEventListener('load', () => {
         }
     })
 
-    // trigger line mode
-    line.addEventListener('click', () => {
-        drawLine = !drawLine;
-        if (drawLine) {
-            canvas.classList.add('erase');
-            line.classList.add('button-active');
-
-        } else {
-            canvas.classList.remove('erase');
-            line.classList.remove('button-active');
-        }
-    })
+    
+ 
     // clear canvas
     clear.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
