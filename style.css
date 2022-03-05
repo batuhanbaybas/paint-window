@@ -21,7 +21,7 @@
     display: flex;
     align-items: center;
 }
-.tool-bar-item > div {
+.tool-bar-item > div{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -41,4 +41,12 @@
 }
 .erase{
     cursor: crosshair;
+}
+form {
+    display: flex;
+    align-items: center;
+    padding-left: 0.6rem;
+}
+form > input{
+    margin-left: 0.6rem;
 }
